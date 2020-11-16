@@ -3,7 +3,7 @@
     <h1 class="m-2 text-4xl px-8 py-2 font-bold">Kev's Advent of Code</h1>
     <nav class="bg-blue-800 px-8 py-2 flex flex-wrap text-lg">
       <h2 class="font-semibold p-2">Year:</h2>
-      <%= for year <- [2020] do %>
+      <%= for year <- 2018..2020 do %>
         <%= live_patch year,
               to: "/#{year}/1",
               class: "hover:text-blue-400 hover:bg-blue-200 p-2 rounded-sm font-medium#{if @year == "#{year}", do: " bg-blue-200 text-blue-400"}"
@@ -12,9 +12,9 @@
     </nav>
     <nav class="bg-blue-700 px-8 py-2 flex flex-wrap text-lg">
       <h2 class="font-semibold p-2">Day:</h2>
-      <%= for day <- 1..25 do %>
+      <%= for day <- 1..25, Aoc.Input.exists?(@year, day) do %>
         <%= live_patch day,
-              to: "/2020/#{day}",
+              to: "/#{@year}/#{day}",
               class: "hover:text-blue-400 hover:bg-blue-200 p-2 rounded-sm font-medium#{if @day == "#{day}", do: " bg-blue-200 text-blue-400"}"
         %>
       <% end %>
