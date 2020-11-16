@@ -18,6 +18,7 @@ defmodule AocWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/:year/:day", DayLive, :day
   end
 
   # Other scopes may use custom stacks.
