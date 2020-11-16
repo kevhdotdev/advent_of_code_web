@@ -9,6 +9,6 @@ defmodule Aoc.Input do
   end
 
   defp filename(year, day), do: "priv/inputs/#{year}/#{padded_number(day)}.txt"
-  defp padded_number(n) when is_integer(n), do: padded_number(Integer.to_string(n))
-  defp padded_number(n) when is_binary(n), do: String.pad_leading(n, 2, "0")
+  def padded_number(n) when is_integer(n), do: padded_number(Integer.to_string(n))
+  def padded_number(n) when is_binary(n), do: String.pad_leading(n, 2, "0")
 end

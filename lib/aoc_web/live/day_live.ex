@@ -33,7 +33,7 @@ defmodule AocWeb.DayLive do
         {:noreply,
          assign(socket,
            part_one: result,
-           part_one_time: DateTime.utc_now() |> DateTime.diff(start_time, :microseconds)
+           part_one_time: DateTime.utc_now() |> DateTime.diff(start_time, :milliseconds)
          )}
 
   def handle_info(
@@ -44,7 +44,7 @@ defmodule AocWeb.DayLive do
         {:noreply,
          assign(socket,
            part_two: result,
-           part_two_time: DateTime.utc_now() |> DateTime.diff(start_time, :microseconds)
+           part_two_time: DateTime.utc_now() |> DateTime.diff(start_time, :milliseconds)
          )}
 
   def handle_info({:DOWN, ref, :process, _, _}, socket), do: {:noreply, socket}
@@ -62,16 +62,20 @@ defmodule AocWeb.DayLive do
     ~L"""
     <h1 class="text-4xl font-bold">Year <%= @year %> :: Day <%= @day %></h1>
     <div>
-      <a href="https://adventofcode.com/<%= @year %>/day/<%= @day %>" class="text-blue-700 hover:underline">aoc</a>
+      <a href="https://adventofcode.com/<%= @year %>/day/<%= @day %>" target="_BLANK" class="text-blue-700 hover:underline">aoc</a>
       <span class="text-gray-500">|</span>
-      <a href="#" class="text-blue-700 hover:underline">my code</a>
+      <%= link "code",
+            to: "https://github.com/kevinhughesdotdev/adent_of_code_web/blob/main/lib/aoc/Y#{@year}/Day#{Aoc.Input.padded_number(@day)}.ex",
+            class: "text-blue-700 hover:underline",
+            target: "_BLANK"
+      %>
     </div>
     <div class="flex">
       <section class="w-1/2">
         <h2 class="text-2xl font-medium mt-5">Part One</h2>
         <%= if @part_one do %>
           <div class="text-lg"><%= @part_one %></div>
-          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>µs</div>
+          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>ms</div>
         <% else %>
           <div class="animate-bounce">Running...</div>
         <% end %>
@@ -80,7 +84,7 @@ defmodule AocWeb.DayLive do
         <h2 class="text-2xl font-medium mt-5">Part Two</h2>
         <%= if @part_two do %>
           <div class="text-lg"><%= @part_two %></div>
-          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>µs</div>
+          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>ms</div>
         <% else %>
         <div class="animate-bounce">Running...</div>
         <% end %>
