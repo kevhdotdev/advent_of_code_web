@@ -72,7 +72,7 @@ defmodule AocWeb.DayLive do
         <div class="text-lg"><%= @part_one %></div>
         <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>µs</div>
       <% else %>
-        <%= img_tag("/images/spinner.gif") %>
+        <div class="animate-bounce">Running...</div>
       <% end %>
     </section>
     <section>
@@ -81,7 +81,7 @@ defmodule AocWeb.DayLive do
         <div class="text-lg"><%= @part_two %></div>
         <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>µs</div>
       <% else %>
-        <%= img_tag("/images/spinner.gif") %>
+      <div class="animate-bounce">Running...</div>
       <% end %>
     </section>
     """
