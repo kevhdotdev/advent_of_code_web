@@ -60,30 +60,32 @@ defmodule AocWeb.DayLive do
 
   def render(assigns) do
     ~L"""
-    <h1 class="text-4xl font-bold">Year <%= @year %>. Day <%= @day %>.</h1>
+    <h1 class="text-4xl font-bold">Year <%= @year %> :: Day <%= @day %></h1>
     <div>
       <a href="https://adventofcode.com/<%= @year %>/day/<%= @day %>" class="text-blue-700 hover:underline">aoc</a>
       <span class="text-gray-500">|</span>
       <a href="#" class="text-blue-700 hover:underline">my code</a>
     </div>
-    <section>
-      <h2 class="text-2xl font-medium mt-5">Part One</h2>
-      <%= if @part_one do %>
-        <div class="text-lg"><%= @part_one %></div>
-        <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>µs</div>
-      <% else %>
+    <div class="flex">
+      <section class="w-1/2">
+        <h2 class="text-2xl font-medium mt-5">Part One</h2>
+        <%= if @part_one do %>
+          <div class="text-lg"><%= @part_one %></div>
+          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>µs</div>
+        <% else %>
+          <div class="animate-bounce">Running...</div>
+        <% end %>
+      </section>
+      <section class="w-1/2">
+        <h2 class="text-2xl font-medium mt-5">Part Two</h2>
+        <%= if @part_two do %>
+          <div class="text-lg"><%= @part_two %></div>
+          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>µs</div>
+        <% else %>
         <div class="animate-bounce">Running...</div>
-      <% end %>
-    </section>
-    <section>
-      <h2 class="text-2xl font-medium mt-5">Part Two</h2>
-      <%= if @part_two do %>
-        <div class="text-lg"><%= @part_two %></div>
-        <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>µs</div>
-      <% else %>
-      <div class="animate-bounce">Running...</div>
-      <% end %>
-    </section>
+        <% end %>
+      </section>
+    </div>
     """
   end
 end
