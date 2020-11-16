@@ -55,9 +55,6 @@ defmodule AocWeb.DayLive do
     "Day" <> String.pad_leading("#{day}", 2, "0")
   end
 
-  defp run(part) do
-  end
-
   def render(assigns) do
     ~L"""
     <h1 class="text-4xl font-bold">Year <%= @year %> :: Day <%= @day %></h1>
