@@ -1,11 +1,29 @@
-<main role="main" class="container">
-  <p class="alert alert-info" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="info"><%= live_flash(@flash, :info) %></p>
-
-  <p class="alert alert-danger" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="error"><%= live_flash(@flash, :error) %></p>
-
-  <%= @inner_content %>
-</main>
+<div class="bg-white max-w-screen-md mx-auto shadow-2xl flex flex-col min-h-screen">
+  <header  class="bg-blue-900 text-gray-300">
+    <h1 class="m-2 text-4xl px-8 py-2 font-bold">Kev's Advent of Code</h1>
+    <nav class="bg-blue-800 px-8 py-2 flex flex-wrap text-lg">
+      <h2 class="font-semibold p-2">Year:</h2>
+      <%= for year <- [2020] do %>
+        <%= live_patch year,
+              to: "/#{year}/1",
+              class: "hover:text-blue-400 hover:bg-blue-200 p-2 rounded-sm font-medium#{if @year == "#{year}", do: " bg-blue-200 text-blue-400"}"
+        %>
+      <% end %>
+    </nav>
+    <nav class="bg-blue-700 px-8 py-2 flex flex-wrap text-lg">
+      <h2 class="font-semibold p-2">Day:</h2>
+      <%= for day <- 1..25 do %>
+        <%= live_patch day,
+              to: "/2020/#{day}",
+              class: "hover:text-blue-400 hover:bg-blue-200 p-2 rounded-sm font-medium#{if @day == "#{day}", do: " bg-blue-200 text-blue-400"}"
+        %>
+      <% end %>
+    </nav>
+  </header>
+  <main class="p-10 flex-grow">
+    <%= @inner_content %>
+  </main>
+  <footer class="text-lg bg-blue-800 p-10 text-gray-100 font-semibold">
+    ...
+  </footer>
+</div>

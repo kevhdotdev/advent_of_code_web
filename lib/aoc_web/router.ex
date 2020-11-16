@@ -17,7 +17,7 @@ defmodule AocWeb.Router do
   scope "/", AocWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    live "/", DayLive, :day
     live "/:year/:day", DayLive, :day
   end
 

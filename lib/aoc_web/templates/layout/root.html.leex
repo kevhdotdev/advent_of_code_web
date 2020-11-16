@@ -9,12 +9,9 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body>
-    <header>
-      <%= for day <- 1..25 do %>
-        <%= live_patch day, to: "/2020/#{day}" %>
-      <% end %>
-    </header>
-    <%= @inner_content %>
+  <body class="bg-blue-100">
+    <div class="bg-white max-w-screen-md mx-auto shadow-2xl flex flex-col min-h-screen">
+      <%= @inner_content %>
+    </div>
   </body>
 </html>

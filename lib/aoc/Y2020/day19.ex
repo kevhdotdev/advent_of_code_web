@@ -1,4 +1,4 @@
-defmodule Aoc.Y2020.Day01 do
+defmodule Aoc.Y2020.Day19 do
   @behaviour Aoc.Day
 
   @impl true
