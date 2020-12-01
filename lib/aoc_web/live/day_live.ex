@@ -57,24 +57,26 @@ defmodule AocWeb.DayLive do
 
   def render(assigns) do
     ~L"""
-    <section>
-      <h2 class="text-lg font-medium">Part One</h2>
-      <%= if @part_one do %>
-        <div class="text-6xl font-cursive font-bold text-yellow-300"><%= @part_one %></div>
-        <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>ms</div>
-      <% else %>
+    <div class="flex-grow space-y-12 sm:space-y-0 sm:flex sm:flex-row sm:justify-around">
+      <section>
+        <h2 class="text-lg font-medium">Part One</h2>
+        <%= if @part_one do %>
+          <div class="text-6xl font-cursive font-bold text-yellow-300"><%= @part_one %></div>
+          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_one_time, precision: 0) %>ms</div>
+        <% else %>
+          <div class="animate-bounce">Running...</div>
+        <% end %>
+      </section>
+      <section>
+        <h2 class="text-lg font-medium">Part Two</h2>
+        <%= if @part_two do %>
+          <div class="text-6xl font-cursive font-bold text-yellow-300"><%= @part_two %></div>
+          <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>ms</div>
+        <% else %>
         <div class="animate-bounce">Running...</div>
-      <% end %>
-    </section>
-    <section>
-      <h2 class="text-lg font-medium">Part Two</h2>
-      <%= if @part_two do %>
-        <div class="text-6xl font-cursive font-bold text-yellow-300"><%= @part_two %></div>
-        <div class="text-sm text-gray-600">Ran in <%= Number.Delimit.number_to_delimited(@part_two_time, precision: 0) %>ms</div>
-      <% else %>
-      <div class="animate-bounce">Running...</div>
-      <% end %>
-    </section>
+        <% end %>
+      </section>
+    </div>
     """
   end
 end
