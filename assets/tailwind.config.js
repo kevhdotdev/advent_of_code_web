@@ -6,7 +6,8 @@ module.exports = {
   purge: [],
   theme: {
     fontFamily: {
-      mono: "'Fira Code'"
+      mono: "'Fira Code'",
+      cursive: "Caveat"
     },
     extend: {},
   },
