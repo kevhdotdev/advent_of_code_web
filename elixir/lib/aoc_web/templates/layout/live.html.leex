@@ -5,7 +5,7 @@
   <main class="flex flex-row flex-grow space-x-10">
     <nav class="text-lg">
       <h2 class="font-semibold">Year</h2>
-      <%= for year <- 2018..2020 do %>
+      <%= for year <- 2015..2020 do %>
         <%= live_patch year,
               to: "/#{year}/1",
               class: "block hover:text-gray-300 hover:bg-gray-700 font-medium#{if @year == "#{year}", do: " bg-gray-700 text-gray-300"}"
