@@ -13,15 +13,16 @@ defmodule Aoc.Y2015.Day04 do
   def part_one(input) do
     Stream.iterate(1, &(&1 + 1))
     |> Enum.find(fn x ->
-      "#{x}#{input}" |> :erlang.md5() |> Base.encode16() |> String.slice(0, 5) == "00000"
+      "#{input}#{x}" |> :erlang.md5() |> Base.encode16() |> String.slice(0, 5) == "00000"
     end)
   end
 
-  @doc ~S"""
-  ## Examples
-      iex> part_two("^v")
-  """
   @impl true
-  def part_two(_input) do
+  def part_two(input) do
+    Stream.iterate(1, &(&1 + 1))
+    |> Enum.find(fn x ->
+      "#{input}#{x}" |> :erlang.md5() |> Base.encode16() |> String.slice(0, 6) ==
+        "000000"
+    end)
   end
 end
