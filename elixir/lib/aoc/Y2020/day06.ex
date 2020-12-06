@@ -9,7 +9,7 @@ defmodule Aoc.Y2020.Day06 do
   @impl true
   def part_one(input) do
     input
-    |> String.split("\n\n", trim: true)
+    |> String.split("\n\n")
     |> Enum.map(fn group ->
       group
       |> String.split("", trim: true)
@@ -29,10 +29,10 @@ defmodule Aoc.Y2020.Day06 do
   @impl true
   def part_two(input) do
     input
-    |> String.split("\n\n", trim: true)
+    |> String.split("\n\n")
     |> Enum.map(fn group ->
       group
-      |> String.split("\n", trim: true)
+      |> String.split("\n")
       |> Enum.map(fn line ->
         line
         |> String.split("", trim: true)
