@@ -24,7 +24,7 @@ defmodule Aoc.Y2020.Day06 do
   @doc ~S"""
   ## Examples
       iex> part_two("abc\n\na\nb\nc\n\nab\nac\n\na\na\na\na\n\nb\n")
-      6
+      5
   """
   @impl true
   def part_two(input) do
